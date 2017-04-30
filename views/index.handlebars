@@ -11,37 +11,41 @@
             <h2>Burgers Ready to Eat!</h2>
 
 
-                {{#each burgers}}
-                    {{#unless this.devoured}}
-                        <div>
-                            {{this.id this.name}}
-
-                            <form action="/{{this.id}}?_method=PUT" method="POST">
-                                <input type="hidden" name="devoured" value="true">
-                                <button type="submit">DEVOUR BURGER!</button>
-                            </form>
-
+            {{#each burgers}}
+                {{#unless this.devoured}}
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                {{this.id}}. {{this.name}}
+                            </div>
+                            <div class="col-sm-2">
+                                <form action="/{{this.id}}?_method=PUT" method="POST">
+                                    <input type="hidden" name="devoured" value="true">
+                                    <button class="btn btn-warning btn-xs" type="submit">EAT ME!</button>
+                                </form>
+                            </div>
                         </div>
-                    {{/unless}}
-                {{/each}}
+                    </div>
+                {{/unless}}
+            {{/each}}
 
         </div>
         <div class="col-sm-6">
             <h2>These Burgers Have Been Devoured!</h2>
 
 
-                {{#each burgers}}
-                    {{#if this.devoured}}
-                        <div>
-                            {{this.id this.name}}
+            {{#each burgers}}
+                {{#if this.devoured}}
+                    <div class="well devoured">
+                        {{this.id}}. {{this.name}}
 
-                            <form action="/{{this.id}}?_method=PUT" method="POST">
-                                <input type="hidden" name="devoured" value="false">
-                            </form>
+                        <form action="/{{this.id}}?_method=PUT" method="POST">
+                            <input type="hidden" name="devoured" value="false">
+                        </form>
 
-                        </div>
-                    {{/if}}
-                {{/each}}
+                    </div>
+                {{/if}}
+            {{/each}}
 
         </div>
     </div>

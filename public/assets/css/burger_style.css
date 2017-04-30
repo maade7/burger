@@ -26,9 +26,9 @@ h1, h2 {
 	text-align: center;
 }
 
-/*button {*/
-    /*float: right;*/
-/*}*/
+.btn-xs {
+    float: right;
+}
 
 #update {
 	float: left;

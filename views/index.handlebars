@@ -10,51 +10,48 @@
 
             <h2>Burgers Ready to Eat!</h2>
 
-            <ul>
+
                 {{#each burgers}}
                     {{#unless this.devoured}}
-                        <li>
-                            {{this.name}}
+                        <div>
+                            {{this.id this.name}}
 
                             <form action="/{{this.id}}?_method=PUT" method="POST">
                                 <input type="hidden" name="devoured" value="true">
                                 <button type="submit">DEVOUR BURGER!</button>
                             </form>
 
-                        </li>
+                        </div>
                     {{/unless}}
                 {{/each}}
-            </ul>
+
         </div>
         <div class="col-sm-6">
-            <h2>These Burgers have been eaten!</h2>
+            <h2>These Burgers Have Been Devoured!</h2>
 
-            <ul>
+
                 {{#each burgers}}
                     {{#if this.devoured}}
-                        <li>
-                            {{this.name}}
+                        <div>
+                            {{this.id this.name}}
 
                             <form action="/{{this.id}}?_method=PUT" method="POST">
                                 <input type="hidden" name="devoured" value="false">
                             </form>
 
-                        </li>
+                        </div>
                     {{/if}}
                 {{/each}}
-            </ul>
+
         </div>
     </div>
 
-    <h2>Add a Burger</h2>
-    <form class="create-update-form" action="/" method="POST">
+    <h2>Enter a burger you want to eat then click "Submit"</h2>
 
-        <div class="form-group">
-            <label for="burgerInput">Burger Name:</label>
-            <input type="text" id="burgerInput" name="name">
-        </div>
-
-
-        <button type="submit">Submit</button>
+    <form id="add" action="/" method="POST">
+        <textarea name="burger_name"></textarea>
+        <button class="btn btn-warning" type="submit">Submit</button>
     </form>
+
 </div>
+
